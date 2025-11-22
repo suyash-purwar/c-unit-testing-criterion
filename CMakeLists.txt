@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.31)
+cmake_minimum_required(VERSION 3.28)
 project(c_unit_testing_criterion C)
 
 set(CMAKE_C_STANDARD 11)

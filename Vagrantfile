@@ -12,26 +12,9 @@ Vagrant.configure("2") do |config|
 
   config.vm.network "private_network", ip: "192.168.50.4"
 
-  github_pat = ENV['GITHUB_PAT_FOR_VM']
-  github_username = "suyash-purwar"
-  repo_name = "c-unit-testing-criterion"
-
-  if github_pat.nil?
-    puts "Error: GITHUB_PAT_FOR_VM environment variable not set on host machine."
-    puts "Please set it before running 'vagrant up'."
-    exit 1
-  end
-
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
-    apt-get install -y build-essential
-    apt-get install -y gdb meson cmake
-
-    if [ ! -d "#{repo_name}" ]; then
-      echo "Cloning repository..."
-      git clone https://oauth2:#{github_pat}@github.com/#{github_username}/#{repo_name}.git
-    else
-      echo "Repository already exists. Skipping clone."
-    fi
+    apt-get install -y build-essential gdb meson cmake
+    apt-get install -y pkg-config libffi-dev
   SHELL
 end

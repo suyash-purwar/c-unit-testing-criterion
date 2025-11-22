@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <criterion/criterion.h>
 
-int main(void) {
-    printf("Hello, World 123!\n");
-    return 0;
+int main() {
+  printf("Hello, World!\n");
+  printf("Fuck you!\n");
+  printf("I guess it is working");
 }
