@@ -10,6 +10,8 @@ Vagrant.configure("2") do |config|
     vb.cpus = 2
   end
 
+  config.vm.network "private_network", ip: "192.168.50.4"
+
   github_pat = ENV['GITHUB_PAT_FOR_VM']
   github_username = "suyash-purwar"
   repo_name = "c-unit-testing-criterion"
@@ -23,7 +25,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
     apt-get install -y build-essential
-    apt-get install -y meson cmake
+    apt-get install -y gdb meson cmake
 
     if [ ! -d "#{repo_name}" ]; then
       echo "Cloning repository..."
