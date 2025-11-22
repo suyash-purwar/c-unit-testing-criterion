@@ -1,4 +1,5 @@
 cmake-build-debug/
 main.dSYM/
 .idea/
+.vagrant/
 .DS_Store
